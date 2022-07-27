@@ -16,10 +16,5 @@ pipeline {
                 sh 'mvn -B -DskipTests clean package -Dcheckstyle.skip'
             }
         }
-        stage('Deliver') { 
-            steps {
-                sh 'pwd && bash ./deliver.sh'
-            }
-        }
     }
 }
