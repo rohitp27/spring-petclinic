@@ -5,10 +5,6 @@ pipeline {
             args '-v /root/.m2:/root/.m2' 
         }
     }
-    environment {
-        DISABLE_AUTH = 'true'
-        DB_ENGINE    = 'sqlite'
-    }
     stages {
         stage('Test') {
             steps {
@@ -17,7 +13,7 @@ pipeline {
         }
         stage('SonarQube') { 
             steps {
-                sh 'mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=spring-petclinic -Dsonar.host.url=$SONAR_HOST_URL -Dsonar.login=$SONAR_TOKEN' 
+                sh 'mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dcheckstyle.skip -Dsonar.projectKey=spring-petclinic -Dsonar.host.url=$SONAR_HOST_URL -Dsonar.login=$SONAR_TOKEN' 
             }
         }
         stage('Build') { 
