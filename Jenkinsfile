@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                sh 'echo "Database engine is ${SONAR_HOST_URL}"' 
+                sh 'echo "Token engine is ${SONAR_TOKEN}"' 
             }
         }
         stage('SonarQube') { 
