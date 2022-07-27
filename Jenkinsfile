@@ -18,7 +18,7 @@ pipeline {
         }
         stage('Deliver') { 
             steps {
-                sh 'bash ./deliver.sh'
+                sh 'pwd && bash ./deliver.sh'
             }
         }
     }
