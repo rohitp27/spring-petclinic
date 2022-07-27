@@ -16,10 +16,5 @@ pipeline {
                 sh 'mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dcheckstyle.skip -Dsonar.projectKey=spring-petclinic -Dsonar.host.url=$SONAR_HOST_URL -Dsonar.login=$SONAR_TOKEN' 
             }
         }
-        stage('Build') { 
-            steps {
-                sh 'mvn -B -DskipTests clean package' 
-            }
-        }
     }
 }
