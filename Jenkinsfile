@@ -12,7 +12,7 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-                sh './mvnw -B -DskipTests clean package' 
+                sh 'mvn -B -DskipTests clean package' 
             }
         }
         stage('Test') {
@@ -22,7 +22,7 @@ pipeline {
         }
         stage('SonarQube') { 
             steps {
-                sh './mvnw clean verify sonar:sonar -Dsonar.projectKey=spring-petclinic -Dsonar.host.url=$SONAR_HOST_URL -Dsonar.login=$SONAR_TOKEN' 
+                sh 'mvn clean verify sonar:sonar -Dsonar.projectKey=spring-petclinic -Dsonar.host.url=$SONAR_HOST_URL -Dsonar.login=$SONAR_TOKEN' 
             }
         }
     }
