@@ -13,7 +13,7 @@ pipeline {
         }
         stage('SonarQube') { 
             steps {
-                sh 'mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=spring-petclinic2 -Dsonar.host.url=$SONAR_HOST_URL -Dsonar.login=$SONAR_TOKEN -Dcheckstyle.skip' 
+                sh 'mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=spring-petclinic2 -Dsonar.host.url=$SONAR_HOST_URL -Dsonar.login=$SONAR_TOKEN -DskipTests -Dcheckstyle.skip' 
             }
         }
         stage('Build') {
