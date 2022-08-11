@@ -1,0 +1,15 @@
+- hosts: all
+  become: true
+
+  tasks:
+    # - name: log into docker hub registry
+    #   docker_login:
+    #     email: "your-email@address"
+    #     username: "a-dockerhub-username"
+    #     password: "a-dockerhub-password"
+    - name: ensure a container is running
+      docker_container:
+        name: test-nginx
+        state: started
+        image: "nginxdemos/hello"
+        pull: true
