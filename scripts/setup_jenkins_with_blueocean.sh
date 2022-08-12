@@ -20,9 +20,7 @@ docker run \
   --storage-driver overlay2 
 
 #Run the dockerfile
-docker build -t myjenkins-blueocean:2.346.2-1 \
-  --build-arg ssh_prv_key="$(cat /home/azureuser/.ssh/id_rsa)" \
-  --build-arg ssh_pub_key="$(cat /home/azureuser/.ssh/id_rsa.pub)" .
+docker build -t myjenkins-blueocean:2.346.2-1 .
 
 docker run \
   --name jenkins-blueocean \
@@ -38,9 +36,7 @@ docker run \
   --volume "$HOME":/home \
   --restart=on-failure \
   --env JAVA_OPTS="-Dhudson.plugins.git.GitSCM.ALLOW_LOCAL_CHECKOUT=true" \
-  myjenkins-blueocean:2.346.2-1 \
-  --build-arg ssh_prv_key="$(cat ~/.ssh/id_rsa)" \
-  --build-arg ssh_pub_key="$(cat ~/.ssh/id_rsa.pub)"
+  myjenkins-blueocean:2.346.2-1 
 
 
 #Print the command password
