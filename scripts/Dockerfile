@@ -14,6 +14,19 @@ RUN echo "deb [arch=$(dpkg --print-architecture) \
 
 RUN apt-get update && apt-get install -y docker-ce-cli
 
+RUN apt-get update && \
+  apt-get install -y gcc python-dev && \
+  apt-get install python3-pip -y && \
+  pip3 install --upgrade pip && \
+  pip3 install --upgrade virtualenv && \ 
+  pip3 install pywinrm && \
+
+RUN apt-get update && apt-get install -y ansible
+
+RUN apt-get -y install openssh-client 
+
 USER jenkins
 
-RUN jenkins-plugin-cli --plugins "blueocean:1.25.5 docker-workflow:1.28"
+# Add the keys and set permissions
+
+RUN jenkins-plugin-cli --plugins "blueocean:1.25.5 docker-workflow:1.28 ansible:1.1"
