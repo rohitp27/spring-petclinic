@@ -26,14 +26,12 @@ RUN apt-get update && \
 
 RUN apt-get update && apt-get install -y ansible
 
-COPY ~/.ssh/id_rsa.pub 
-
 USER jenkins
 
 # Add the keys and set permissions
 RUN echo "$ssh_prv_key" > /root/.ssh/id_rsa && \
     echo "$ssh_pub_key" > /root/.ssh/id_rsa.pub && \
-    chmod 600 /root/.ssh/id_rsa && \
-    chmod 600 /root/.ssh/id_rsa.pub
+    chmod 600 ~/.ssh/id_rsa && \
+    chmod 600 ~/.ssh/id_rsa.pub
 
 RUN jenkins-plugin-cli --plugins "blueocean:1.25.5 docker-workflow:1.28 ansible:1.1"
