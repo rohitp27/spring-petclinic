@@ -22,8 +22,7 @@ docker run \
 #Run the dockerfile
 docker build -t myjenkins-blueocean:2.346.2-1 \
   --build-arg ssh_prv_key="$(cat /home/azureuser/.ssh/id_rsa)" \
-  --build-arg ssh_pub_key="$(cat /home/azureuser/.ssh/id_rsa.pub)" \
-  --squash .
+  --build-arg ssh_pub_key="$(cat /home/azureuser/.ssh/id_rsa.pub)" .
 
 docker run \
   --name jenkins-blueocean \
