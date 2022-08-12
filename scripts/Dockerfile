@@ -23,6 +23,8 @@ RUN apt-get update && \
 
 RUN apt-get update && apt-get install -y ansible
 
+RUN apt-get -y install openssh-client 
+
 USER jenkins
 
 # Add the keys and set permissions
