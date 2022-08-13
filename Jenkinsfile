@@ -1,19 +1,9 @@
 pipeline {
-    agent {
-        docker {
-            image 'maven:3.8.1-adoptopenjdk-11' 
-            args '-v /root/.m2:/root/.m2' 
-        }
-    }
+    agent any
     stages {
-        stage('SonarQube') { 
+        stage('Print stuff') { 
             steps {
-                sh 'mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=spring-petclinic2 -Dsonar.host.url=$SONAR_HOST_URL -Dsonar.login=$SONAR_TOKEN -DskipTests -Dcheckstyle.skip' 
-            }
-        }
-        stage('Build') {
-            steps {
-                sh 'mvn -B -DskipTests clean package -Dcheckstyle.skip'
+                sh 'echo $USER' 
             }
         }
     }
